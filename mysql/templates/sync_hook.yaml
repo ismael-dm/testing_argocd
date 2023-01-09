@@ -6,18 +6,14 @@ metadata:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
-  ttlSecondsAfterFinished: 100
+  ttlSecondsAfterFinished: 10
   template:
     spec:
       containers:
         - name: mysql-client
           image: bitnami/mysql:8.0.30-debian-11-r15
           imagePullPolicy: IfNotPresent
-          command: ["bash"]
-          args:
-            [
-              "mysql -h mysql.kafka.svc.cluster.local -uroot -prootpasswd",
-              "create database testing;"
-            ]
+          command: [ "/bin/bash", "-c" ]
+          args: ["mysql -h mysql.kafka.svc.cluster.local -uroot -prootpasswd -e 'create database testing;'"]
       restartPolicy: Never
   backoffLimit: 1
