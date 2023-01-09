@@ -10,5 +10,4 @@ spec:
     command:
       - sh
       - -c
-      - "mysql -h mysql.kafka.svc.cluster.local -uroot -prootpasswd"
-      - create database testing;
+      - mysql -h mysql.kafka.svc.cluster.local -uroot -prootpasswd
