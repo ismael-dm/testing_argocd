@@ -14,6 +14,6 @@ spec:
           image: bitnami/mysql:8.0.30-debian-11-r15
           imagePullPolicy: IfNotPresent
           command: [ "/bin/bash", "-c" ]
-          args: ["mysql -h mysql.kafka.svc.cluster.local -uroot -prootpasswd -e 'CREATE database testing IF NOT EXISTS testing;'"]
+          args: ["mysql -h mysql.kafka.svc.cluster.local -uroot -prootpasswd -e 'CREATE database IF NOT EXISTS testing;'"]
       restartPolicy: Never
   backoffLimit: 1
